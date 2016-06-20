@@ -1,3 +1,3 @@
 <?php
-	require('includes/database/connect.db.php');
+	require('/database/connect.db.php');
 ?>

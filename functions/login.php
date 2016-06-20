@@ -3,7 +3,7 @@
 	$username = $_POST['login_username'];
 	$password = md5($_POST['login_pass']);
 
-	require('includes/database/connect.db.php');
+	require('../includes/database/connect.db.php');
 	$result = mysql_query("SELECT * FROM users WHERE username = '$username' AND password='$password'");
 	if(mysql_num_rows($result)) {
 		$res = mysql_fetch_array($result);

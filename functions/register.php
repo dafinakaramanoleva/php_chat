@@ -12,6 +12,8 @@
 	} else {
 		$result = mysql_query("INSERT INTO users(`name`, `username`, `password`, `status`) VALUES 
 			('$name', '$username', '$password','0')");
+		$add_to_all = mysql_query("INSERT INTO `chat_users_rooms`(`username`, `room`) VALUES ('$username', 'All users')");
+		
 		$_SESSION['username'] = $username;
 		header('Location: chat_rooms.php');
 	}

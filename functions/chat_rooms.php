@@ -1,6 +1,5 @@
 <?php
 	include 'header.php';
-	require('includes/core.php');
     	$getRooms = "SELECT * FROM chat_rooms;";
     	$roomResults = mysql_query($getRooms);	
 ?>
@@ -23,11 +22,11 @@
 	        ?>
 	        <tr class="row room">
 				<td class="col-xs-6">
-					<a href="room/?name=<?php echo $rooms['name']?>">
+					<a href="chat.php?name=<?php echo $rooms['name']?>">
 	            	<?php echo $rooms['name'] ?>
 	            </a>
 				</td>
-				<td class="col-xs-6">
+				<td class="numofusers col-xs-6">
 					<?php echo "<span>Users chatting: <strong>" . $numOfUsers . "</strong></span>" ?>
 				</td>
 			</tr>
@@ -35,6 +34,8 @@
 	        <?php endwhile; ?>
 	    </tbody>
 	</table>
+	<button class="btn btn-success" id="add_room_button">Add room</button>
+	
 </div>
 <?php
 	include 'footer.php';

@@ -1,8 +1,49 @@
-.content {
-	width: 60%;
-	margin: 0 auto;
-}
-
 .room:hover {
 	cursor: pointer;
+}
+
+.right {
+	float: right;
+}
+
+.dsnone {
+	display: none;
+}
+
+.numofusers {
+	text-align: right;
+}
+
+.msg {
+	padding: 10px;
+    border-top: 1px solid #ddd
+}
+
+.chat > textarea {
+	width: 90%;
+	display: inline-block;
+}
+
+.chat {
+	margin-bottom: 30px;
+}
+
+.chat > button {
+	width: 9%;
+    vertical-align: top;
+}
+
+.messages {
+    height: 400px;
+    padding: 10px;
+
+}
+
+.panel-heading.row {
+	margin: 0;
+}
+
+.panel-heading > .chat-name {
+	font-size: 25px;
+    font-weight: bold;
 }

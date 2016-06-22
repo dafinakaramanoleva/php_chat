@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include './includes/header.php'; ?>
 <div class="container">
 	<div class="row" style="margin-top:10%">
 		<div class="col-lg-1"></div>
@@ -53,4 +53,4 @@
 		<div class="col-lg-1"></div>
 	</div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include './includes/footer.php'; ?>

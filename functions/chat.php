@@ -1,5 +1,5 @@
 <?php
-	include 'header.php';
+	include '../includes/header.php';
 	$current_user = $_SESSION['username'];
 
 	$room = $_GET['name'];
@@ -69,6 +69,9 @@
 		</div>
 	</div>
 </div>
+
 <?php
-	include 'footer.php';
+	include '../includes/footer.php';
 ?>
+
+<script type="text/javascript" src="../js/chat.js"></script>

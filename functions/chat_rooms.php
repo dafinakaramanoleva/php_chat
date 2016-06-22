@@ -1,5 +1,5 @@
 <?php
-	include 'header.php';
+	include '../includes/header.php';
     	$getRooms = "SELECT * FROM chat_rooms;";
     	$roomResults = mysql_query($getRooms);	
 ?>
@@ -38,5 +38,5 @@
 	
 </div>
 <?php
-	include 'footer.php';
+	include '../includes/footer.php';
 ?>

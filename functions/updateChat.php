@@ -1,7 +1,6 @@
 <?php
 	require('../includes/database/connect.db.php');
-	$date = (new \DateTime())->format('Y-m-d H:i:s');
-	
+
 	function get_msg() {
 		$room = $_GET['room'];
 		$message_query = "SELECT * FROM `messages` WHERE `room` = '$room' ORDER BY `time` DESC;";

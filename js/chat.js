@@ -5,9 +5,9 @@ $(function(){
 		$('#message-text').removeAttr("disabled");
     	$('#send-message').removeAttr("disabled");
 	}
-
 	var interval = setInterval(function() {
 		updateMsg();
+	console.log(Date.parse("2014-01-08 00:00:00"));
 	}, 1000);
 	
 });

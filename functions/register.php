@@ -4,7 +4,7 @@
 	$username = $_POST['reg_username'];
 	$password = md5($_POST['reg_pass']);
 
-	require('includes/database/connect.db.php');
+	require('../includes/database/connect.db.php');
 
 	$checkexist = mysql_query("SELECT username FROM users WHERE username='$username'");
 	if(mysql_num_rows($checkexist)) {

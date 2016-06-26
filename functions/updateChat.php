@@ -3,7 +3,12 @@
 
 	function get_msg() {
 		$room = $_GET['room'];
-		$message_query = "SELECT * FROM `messages` WHERE `room` = '$room' ORDER BY `time` DESC;";
+		$time = $_GET['time'];
+
+		$timestamp = strtotime($time);
+		$current_time = date("Y-m-d H:i:s", $timestamp);
+ 
+		$message_query = "SELECT * FROM `messages` WHERE `room` = '$room' AND `time` > '$current_time' ORDER BY `time` DESC;";
 		$messagesResult = mysql_query($message_query);
 
 		$msg_array = array();

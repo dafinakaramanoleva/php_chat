@@ -2,9 +2,11 @@
 	$username = $_POST['username'];
 	$msg = $_POST['msg'];
 	$room = $_POST['room'];
+	$time =  date('Y-m-d H:i:s', strtotime('+1 hour'));
 
 	$data = array(
 		'username' => $username,
+		'currenttime' => $time,
 		'msg' => $msg
 	);
 

@@ -30,10 +30,10 @@ function sendMessage(username, time, event) {
 		    dataType: 'json',
 		    data: data,
 		    success: function(data) {
-	    		$('.messages').append("<div class='row msg'>" +
+	    		$('.messages').prepend("<div class='row msg'>" +
 					"<div class='col-md-2 username'>" + data.username + ": </div>" +
 					"<div class='col-md-7 msg-text'>" + data.msg + "</div>" +
-					"<div class='col-md-3 time'>" + time + "</div>" +
+					"<div class='col-md-3 time'>" + data.currenttime + "</div>" +
 				"</div>");
 
 		    },
@@ -95,19 +95,31 @@ function leaveChat(username, event) {
 }
 
 function updateMsg() {
-	$('.messages').empty();
-		var room = $('.add-room-content .chat-name').text();
-		var data = {"room" : room};
+	//get the last shwon message's time and select ell messages after it
+	var d = new Date();
+	var time = {
+		"year" : d.getFullYear(),
+		"month" : d.getMonth() + 1,
+		"day" : d.getDate(),
+		"hour" : d.getHours(),
+		"minutes" : d.getMinutes(),
+		"seconds" : d.getSeconds()
+	}
 
-		$.ajax({
-			url: 'updateChat.php',
-		    type: 'GET',
-		    data: data,
-		    success: function(data) {
-		    	$('.messages').html(data);
-		    },
-		    error: function( jqXhr, textStatus, errorThrown ){
-		        console.log( errorThrown );
-		    }
-		});
+	var current_time = time.year + "-" + time.month + "-" + time.day + " " + time.hour + ":" + time.minutes + ":" + time.seconds;
+
+	var room = $('.add-room-content .chat-name').text();
+	var data = {"room" : room, "time" : current_time};
+	$.ajax({
+		url: 'updateChat.php',
+	    type: 'GET',
+	    data: data,
+	    success: function(data) {
+	    	console.log(data);
+	    	$('.messages').prepend(data);
+	    },
+	    error: function( jqXhr, textStatus, errorThrown ){
+	        console.log( errorThrown );
+	    }
+	});
 }

@@ -6,7 +6,16 @@
 
 	$users = mysql_query("SELECT username FROM `chat_users_rooms` WHERE `room` = '$room';");
 	$query = mysql_query("SELECT username FROM `chat_users_rooms` WHERE `username` = '$current_user' AND `room` = '$room';");
-	
+
+	$message_query = "SELECT * FROM `messages` WHERE `room` = '$room' ORDER BY `time` DESC;";
+	$messagesResult = mysql_query($message_query);
+
+	$msg_array = array();
+	while($message = mysql_fetch_assoc($messagesResult)) {
+		$msg_array[] = array('username' => $message['username'],
+							'message' => $message['message'],
+							'time' => $message['time']);
+	}	
 ?>
 
 <div class="container">
@@ -42,7 +51,7 @@
 				?>
 					<textarea class="form-control" id="message-text" rows="1" placeholder="Type your message here" disabled></textarea>
 					<button class="btn btn-success" id="send-message" disabled onclick="sendMessage('<?php echo $current_user ?>',
-						'<?php echo (new \DateTime())->format('Y-m-d H:i:s'); ?>', event)">Send
+						'<?php echo (new DateTime())->format('Y-m-d H:i:s'); ?>', event)">Send
 					</button>
 				<?php
 					} else {
@@ -57,7 +66,17 @@
 				?>
 				
 			</div>
-			<div class="messages"></div>
+			<div class="messages">
+				<?php 
+					foreach ($msg_array as $msg) {
+						echo "<div class='row msg'>
+							<div class='col-md-2 username'>" .$msg['username'].  ": </div>
+							<div class='col-md-7 msg-text'>" .$msg['message'].  "</div>
+							<div class='col-md-3 time'>" .$msg['time'].  "</div>
+						</div>";
+					}
+				?>
+			</div>
 		</div>
 		<div class="panel-footer">
 			<span>This room's users - </span>

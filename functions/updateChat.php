@@ -12,10 +12,17 @@
 		$messagesResult = mysql_query($message_query);
 
 		$msg_array = array();
+		$index = 0;
 		while($message = mysql_fetch_assoc($messagesResult)) {
-			$msg_array[] = array('username' => $message['username'],
-									'message' => $message['message'],
-									'time' => $message['time']);
+			$msg_array[$index] = array('message_id' => $message['id'],
+								 'username' => $message['username'],
+								 'message' => $message['message'],
+								 'time' => $message['time'],
+								 'size' => null);
+			if($message['size'] != null) {
+				$msg_array[$index]['size'] = $message['size'];
+			}
+		$index++;
 		}
 
 		return $msg_array;
@@ -24,11 +31,20 @@
 
 	$messages = get_msg();
 	foreach ($messages as $msg) {
-		echo "<div class='row msg'>
+		$result = "<div class='row msg'>
 			<div class='col-md-2 username'>" .$msg['username'].  ": </div>
-			<div class='col-md-7 msg-text'>" .$msg['message'].  "</div>
+			<div class='col-md-7 msg-text'>";
+		if ($msg['size'] != null) {
+			$result = $result."<a href='download.php?id=".$msg['id']."'>". $msg['message'] ."</a>";
+		} else {
+			$result = $result.$msg['message'];
+		}
+		   
+		$result = $result."</div>
 			<div class='col-md-3 time'>" .$msg['time'].  "</div>
 		</div>";
+
+		echo $result;
 	}
 	
 

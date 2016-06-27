@@ -1,10 +1,8 @@
 <?php
 	require('../includes/database/connect.db.php');
 
-	//NOT this way!!!!
-	//add links when file!!!!
-	$current_user = "adi";
-	$room = "All Users";
+	$current_user = $_POST['username'];
+	$room = $_POST['username'];
 
 	if(isset($_FILES['myfile']) && $_FILES['myfile']['size'] > 0) {
 		$fileName = $_FILES['myfile']['name'];

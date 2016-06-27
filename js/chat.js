@@ -120,11 +120,8 @@ function fileUpload (username) {
 
 	var form_data = new FormData();                  
     form_data.append('myfile', file);
-    var data = {
-    	"file" : form_data,
-    	"room" : room,
-    	"username" : username
-    };
+    form_data.append('username', username);
+    form_data.append('room', room);
 
 	$.ajax({
 		url: 'file_upload.php',

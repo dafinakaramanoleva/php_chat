@@ -28,9 +28,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `username` varchar(255) NOT NULL,
   `room` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
+  `type` VARCHAR(30),
+  `size` INT,
+  `content` MEDIUMBLOB,
   `time` datetime NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`id`)
 );
 
 INSERT INTO `chat_rooms`(`name`) VALUES ('All Users');
+
+
 

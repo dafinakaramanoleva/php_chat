@@ -4,6 +4,7 @@ $(function(){
 	if(!$('#leave-btn').length == 0) {
 		$('#message-text').removeAttr("disabled");
     	$('#send-message').removeAttr("disabled");
+    	$('#file').removeAttr("disabled");
 	}
 
 	var interval = setInterval(function() {
@@ -84,6 +85,7 @@ function leaveChat(username, event) {
 	    success: function(data) { 
 	    	$('#send-message').attr('disabled', 'disabled');
 	    	$('#message-text').attr('disabled', 'disabled');
+	    	$('#file').attr('disabled', 'disabled');
 
 	    	location.reload();
 	    },
@@ -95,27 +97,43 @@ function leaveChat(username, event) {
 }
 
 function updateMsg() {
-	//get the last shwon message's time and select ell messages after it
-	var d = new Date();
-	var time = {
-		"year" : d.getFullYear(),
-		"month" : d.getMonth() + 1,
-		"day" : d.getDate(),
-		"hour" : d.getHours(),
-		"minutes" : d.getMinutes(),
-		"seconds" : d.getSeconds()
-	}
-
-	var current_time = time.year + "-" + time.month + "-" + time.day + " " + time.hour + ":" + time.minutes + ":" + time.seconds;
+	var last_msg_time = $('.row .time').first().text();
 
 	var room = $('.add-room-content .chat-name').text();
-	var data = {"room" : room, "time" : current_time};
+	var data = {"room" : room, "time" : last_msg_time};
 	$.ajax({
 		url: 'updateChat.php',
 	    type: 'GET',
 	    data: data,
 	    success: function(data) {
-	    	console.log(data);
+	    	$('.messages').prepend(data);
+	    },
+	    error: function( jqXhr, textStatus, errorThrown ){
+	        console.log( errorThrown );
+	    }
+	});
+}
+
+function fileUpload (username) {
+	var file = $('#file')[0].files[0];
+	var room = $('.add-room-content .chat-name').text();
+
+	var form_data = new FormData();                  
+    form_data.append('myfile', file);
+    var data = {
+    	"file" : form_data,
+    	"room" : room,
+    	"username" : username
+    };
+
+	$.ajax({
+		url: 'file_upload.php',
+	    type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
+	    data: form_data,
+	    success: function(data) {
 	    	$('.messages').prepend(data);
 	    },
 	    error: function( jqXhr, textStatus, errorThrown ){

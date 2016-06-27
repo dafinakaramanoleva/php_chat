@@ -53,6 +53,8 @@
 					<button class="btn btn-success" id="send-message" disabled onclick="sendMessage('<?php echo $current_user ?>',
 						'<?php echo (new DateTime())->format('Y-m-d H:i:s'); ?>', event)">Send
 					</button>
+					<input type="file" enctype='multipart/form-data' class="right p10" name="file" id="file"
+					 	onchange="javascript:fileUpload('<?php echo $current_user ?>');" disabled>
 				<?php
 					} else {
 				?>
@@ -60,7 +62,8 @@
 					<button class="btn btn-success" id="send-message" onclick="sendMessage('<?php echo $current_user ?>',
 						'<?php echo (new \DateTime())->format('Y-m-d H:i:s'); ?>', event)">Send
 					</button>
-
+					<input type="file" enctype='multipart/form-data' class="right p10" name="file" id="file" 
+						onchange="javascript:fileUpload('<?php echo $current_user ?>');">
 				<?php
 					}
 				?>

@@ -4,7 +4,7 @@
     	$roomResults = mysql_query($getRooms);	
 ?>
 
-<div class="container">
+<div class="container main">
 	<table class="table table-hover">
 		<thead>
 			<tr>

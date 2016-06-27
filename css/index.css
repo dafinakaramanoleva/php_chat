@@ -1,5 +1,20 @@
+body{
+    background-image:url('../images/background.jpg');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
 .room:hover {
 	cursor: pointer;
+}
+
+.p10 {
+	padding: 10px 0px;
 }
 
 .right {
@@ -25,7 +40,7 @@
 }
 
 .chat {
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 
 .chat > button {

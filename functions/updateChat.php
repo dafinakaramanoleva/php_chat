@@ -35,7 +35,7 @@
 			<div class='col-md-2 username'>" .$msg['username'].  ": </div>
 			<div class='col-md-7 msg-text'>";
 		if ($msg['size'] != null) {
-			$result = $result."<a href='download.php?id=".$msg['id']."'>". $msg['message'] ."</a>";
+			$result = $result."<a href='download.php?id=".$msg['message_id']."'>". $msg['message'] ."</a>";
 		} else {
 			$result = $result.$msg['message'];
 		}

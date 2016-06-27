@@ -2,7 +2,7 @@
 	require('../includes/database/connect.db.php');
 
 	$current_user = $_POST['username'];
-	$room = $_POST['username'];
+	$room = $_POST['room'];
 
 	if(isset($_FILES['myfile']) && $_FILES['myfile']['size'] > 0) {
 		$fileName = $_FILES['myfile']['name'];
@@ -19,7 +19,8 @@
 		    $fileName = addslashes($fileName);
 		}
 
-		$query = "INSERT INTO `messages` (`username`, `room`, `message`, `size`, `type`, `content` ) VALUES ('$current_user', '$room', '$fileName', '$fileSize', '$fileType', '$content')";
+		$query = "INSERT INTO `messages` (`username`, `room`, `message`, `size`, `type`, `content` )
+								 VALUES ('$current_user', '$room', '$fileName', '$fileSize', '$fileType', '$content')";
 		mysql_query($query); 
 
 		$id = "";

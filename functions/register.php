@@ -15,6 +15,6 @@
 		$add_to_all = mysql_query("INSERT INTO `chat_users_rooms`(`username`, `room`) VALUES ('$username', 'All users')");
 		
 		$_SESSION['username'] = $username;
-		header('Location: chat_rooms.php');
+		header('Location: chatRooms.php');
 	}
 ?>

@@ -31,7 +31,7 @@
 		<div class="panel-heading row">
 			<div class="chat-name col-md-11"><?php echo $room ?></div>
 			<?php
-				if ($room != 'All users') {
+				if ($room != "All Users") {
 					if(mysql_num_rows($query)) {
 						?>
 							<div class="col-md-1">
@@ -55,7 +55,7 @@
 		<div class="panel-body">
 			<div class="chat">
 				<?php
-					if ($room != 'All users') {
+					if ($room != "All Users") {
 				?>
 					<textarea class="form-control" id="message-text" rows="1" placeholder="Type your message here" disabled></textarea>
 					<button class="btn btn-success" id="send-message" disabled onclick="sendMessage('<?php echo $current_user ?>',

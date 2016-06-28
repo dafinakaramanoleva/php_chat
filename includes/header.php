@@ -29,7 +29,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand"<?php if(isset($_SESSION['username'])){ ?> href="chat_rooms.php" <?php } ?> >Web Chat Application</a>
+		      <a class="navbar-brand"<?php if(isset($_SESSION['username'])){ ?> href="chatRooms.php" <?php } ?> >Web Chat Application</a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav navbar-right">

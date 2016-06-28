@@ -8,6 +8,6 @@
 		echo "<h1>Chat room already exists</h1>";
 	} else {
 		$result = mysql_query("INSERT INTO chat_rooms(`name`) VALUES ('$name')");
-		header('Location: chat_rooms.php');
+		header('Location: chatRooms.php');
 	}
 ?>

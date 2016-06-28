@@ -26,7 +26,7 @@ function sendMessage(username, time, event) {
 		};
 
 		$.ajax({
-		    url: 'insert_msg.php',
+		    url: 'insertMsg.php',
 		    type: 'POST',
 		    dataType: 'json',
 		    data: data,
@@ -124,7 +124,7 @@ function fileUpload (username) {
     form_data.append('room', room);
 
 	$.ajax({
-		url: 'file_upload.php',
+		url: 'fileUpload.php',
 	    type: 'POST',
         cache: false,
         contentType: false,

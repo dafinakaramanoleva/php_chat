@@ -8,7 +8,7 @@
 	if(mysql_num_rows($result)) {
 		$res = mysql_fetch_array($result);
 
-		header('Location: chat_rooms.php');
+		header('Location: chatRooms.php');
 		$_SESSION['username'] = $res['username'];
 	} else {
 		echo "<h1>No user found</h1>";
